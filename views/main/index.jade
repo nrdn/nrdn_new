@@ -1,5 +1,4 @@
 extends ../layout
-include ../events_list.jade
 
 block title
 	title= __('НАРОДНЫЙ АРХИТЕКТОР')
@@ -15,11 +14,16 @@ block append works_bg
 		each event in events
 			if (event.images[0])
 				.background_item(style='background-image: url(' + event.images[0].original + ')')
+			else
+				.background_item(style='background-color:#eee')
 
 block content
-	.content_outer_block
+	.works_block
 		each event in events
-			.item_title= event.i18n.title.get(locale)
+			.work_item
+				.work_logo!= event.videos[0]
+				.work_tag= 'ew'
+				.work_title= event.i18n.title.get(locale)
 
 block footer
 	.social_block
