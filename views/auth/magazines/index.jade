@@ -21,4 +21,4 @@ block content
 			.gallery
 				a.rm_magazine(href='#', id=magazine._id)= 'удалить '
 				!=' | '
-				a(href='/auth/magazines/edit/' + magazine._id)= magazine.i18n.title.get('ru') ? magazine.i18n.title.get('ru') + ' № ' + magazine.num : 'Название журнала'
+				a(href='/auth/magazines/edit/' + magazine._id)= magazine.i18n.title.get('ru') ? magazine.i18n.title.get('ru') : 'Название журнала'

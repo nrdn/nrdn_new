@@ -38,7 +38,7 @@ app.use(cookieParser());
 app.use(i18n.init);
 
 app.use(session({
-	key: 'sovhis.sess',
+	key: 'session',
 	resave: false,
 	saveUninitialized: false,
 	secret: 'keyboard cat',
@@ -67,12 +67,15 @@ var main = require('./routes/main.js');
 var events = require('./routes/events.js');
 var news = require('./routes/news.js');
 var vacancys = require('./routes/vacancys.js');
+var partners = require('./routes/partners.js');
 var services = require('./routes/services.js');
 var collects = require('./routes/collects.js');
-
+var history = require('./routes/history.js');
 var exposure = require('./routes/exposure.js');
 var subsidiarys = require('./routes/subsidiarys.js');
 var souvenirs = require('./routes/souvenirs.js');
+var magazines = require('./routes/magazines.js');
+var teams = require('./routes/teams.js');
 var specials = require('./routes/specials.js');
 
 var content = require('./routes/content.js');
@@ -81,9 +84,10 @@ var files = require('./routes/files.js');
 var auth = require('./routes/auth.js');
 
 var admin_users = require('./routes/admin/users.js');
-
+var admin_history = require('./routes/admin/history.js');
 var admin_news = require('./routes/admin/news.js');
 var admin_vacancys = require('./routes/admin/vacancys.js');
+var admin_partners = require('./routes/admin/partners.js');
 var admin_services = require('./routes/admin/services.js');
 var admin_exhibits = require('./routes/admin/exhibits.js');
 var admin_collects = require('./routes/admin/collects.js');
@@ -93,9 +97,12 @@ var admin_events = require('./routes/admin/events.js');
 var admin_categorys = require('./routes/admin/categorys.js');
 var admin_catalogues= require('./routes/admin/catalogues.js');
 var admin_souvenirs = require('./routes/admin/souvenirs.js');
+var admin_magazines = require('./routes/admin/magazines.js');
+var admin_teams = require('./routes/admin/teams.js');
 
 var admin_specials = require('./routes/admin/specials.js');
 
+var admin_partnership = require('./routes/admin/partnership.js');
 var admin_serviceship = require('./routes/admin/serviceship.js');
 var admin_contacts = require('./routes/admin/contacts.js');
 var admin_schedule = require('./routes/admin/schedule.js');
@@ -147,7 +154,9 @@ app.route('/news')
 app.route('/news/:id').get(news.news);
 
 
-
+// === Partnership Route
+app.route('/partnership')
+	.get(content.partnership)
 
 // === Serviceship Route
 app.route('/serviceship')
@@ -163,6 +172,13 @@ app.route('/vacancys')
 app.route('/vacancys/:id').get(globals.imageGallery('main'), vacancys.vacancys);
 
 
+// === partners Route
+app.route('/partners')
+	.get(globals.imageGallery('main'), partners.index)
+	.post(partners.partners);
+
+// === partners Route
+app.route('/partners/:id').get(globals.imageGallery('main'), partners.partners);
 
 
 // === services Route
@@ -175,6 +191,18 @@ app.route('/services/:id').get(globals.imageGallery('main'), services.services);
 
 
 
+// === Magazines Route // Публикации
+app.route('/publish')
+	.get(globals.imageGallery('main'), magazines.index)
+	.post(magazines.get_magazines)
+
+// === Magazine Route // Публикации
+app.route('/publish/:id').get(magazines.magazine)
+
+// === Teams Route
+app.route('/team')
+	.get(globals.imageGallery('main'), teams.index)
+	.post(teams.get_teams)
 
 // === Specials Route
 app.route('/specials')
@@ -197,6 +225,8 @@ app.route('/collections').get(collects.index);
 // === Collection Route
 app.route('/collections/:id').get(collects.collect);
 
+// === History Route
+app.route('/history').get(globals.imageGallery('history'), history.index);
 
 // === Subsidiarys Route
 app.route('/subsidiarys').get(subsidiarys.index);
@@ -295,6 +325,27 @@ app.route('/auth/vacancys/remove')
 
 
 
+// === Admin partners Route
+app.route('/auth/partners').get(checkAuth, admin_partners.list);
+
+
+// === Admin @add partners Route
+app.route('/auth/partners/add')
+	 .get(checkAuth, admin_partners.add)
+	 .post(checkAuth, admin_partners.add_form);
+
+
+// === Admin @edit partners Route
+app.route('/auth/partners/edit/:id')
+	 .get(checkAuth, admin_partners.edit)
+	 .post(checkAuth, admin_partners.edit_form);
+
+
+// === Admin @remove partners Route
+app.route('/auth/partners/remove')
+	 .post(checkAuth, admin_partners.remove);
+
+
 
 
 
@@ -320,6 +371,32 @@ app.route('/auth/services/remove')
 
 
 
+
+// ------------------------
+// *** Admin History Routes Block ***
+// ------------------------
+
+
+
+// === Admin history Route
+app.route('/auth/history').get(checkAuth, admin_history.list);
+
+
+// === Admin @add history Route
+app.route('/auth/history/add')
+	 .get(checkAuth, admin_history.add)
+	 .post(checkAuth, admin_history.add_form);
+
+
+// === Admin @edit history Route
+app.route('/auth/history/edit/:id')
+	 .get(checkAuth, admin_history.edit)
+	 .post(checkAuth, admin_history.edit_form);
+
+
+// === Admin @remove history Route
+app.route('/auth/history/remove')
+	 .post(checkAuth, admin_history.remove);
 
 
 
@@ -575,6 +652,47 @@ app.route('/auth/gallerys/remove')
 
 
 
+// === Admin magazines Route
+app.route('/auth/magazines').get(checkAuth, admin_magazines.list);
+
+
+// === Admin @add magazines Route
+app.route('/auth/magazines/add')
+	 .get(checkAuth, admin_magazines.add)
+	 .post(checkAuth, admin_magazines.add_form);
+
+
+// === Admin @edit magazines Route
+app.route('/auth/magazines/edit/:id')
+	 .get(checkAuth, admin_magazines.edit)
+	 .post(checkAuth, admin_magazines.edit_form);
+
+
+// === Admin @remove magazines Route
+app.route('/auth/magazines/remove')
+	 .post(checkAuth, admin_magazines.remove);
+
+
+// === Admin teams Route
+app.route('/auth/teams').get(checkAuth, admin_teams.list);
+
+
+// === Admin @add teams Route
+app.route('/auth/teams/add')
+	 .get(checkAuth, admin_teams.add)
+	 .post(checkAuth, admin_teams.add_form);
+
+
+// === Admin @edit teams Route
+app.route('/auth/teams/edit/:id')
+	 .get(checkAuth, admin_teams.edit)
+	 .post(checkAuth, admin_teams.edit_form);
+
+
+// === Admin @remove teams Route
+app.route('/auth/teams/remove')
+	 .post(checkAuth, admin_teams.remove);
+
 
 
 // === Admin specials Route
@@ -610,7 +728,9 @@ app.route('/auth/contacts')
 	 .get(checkAuth, admin_contacts.edit)
 	 .post(checkAuth, admin_contacts.edit_form);
 
-
+app.route('/auth/partnership')
+	 .get(checkAuth, admin_partnership.edit)
+	 .post(checkAuth, admin_partnership.edit_form);
 
 app.route('/auth/serviceship')
 	 .get(checkAuth, admin_serviceship.edit)
@@ -670,7 +790,8 @@ app.route('/schedule').get(globals.imageGallery('main'), content.schedule);
 // === Contacts Route
 app.route('/contacts').get(content.contacts);
 
-
+// === Partnership Route
+app.route('/partnership').get(globals.imageGallery('main'), content.partnership);
 
 // === Serviceship Route
 app.route('/serviceship').get(globals.imageGallery('main'), content.serviceship);

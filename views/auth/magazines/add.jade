@@ -22,12 +22,8 @@ block content
 		form(action="", method="post", enctype="multipart/form-data")
 			.form_title Заголовок:
 			+form_text_single('title')
-			.form_title Номер:
-			input(type='text', name='num')
 			.form_title Ссылка:
 			input(type='text', name='url')
-			.form_title Изображение:
-			input(type='file', name='image')
 			br
 			br
 			input(type='submit', value='отправить')
