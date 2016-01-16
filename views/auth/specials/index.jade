@@ -1,0 +1,24 @@
+extends ../../layout
+
+block title
+	title= 'СПЕЦПРОЕКТЫ'
+
+block content_style
+	link(rel='stylesheet', type='text/css', href='/build/css/add.css')
+
+block content_scripts
+	script(type='text/javascript', src='/build/js/lists.js')
+
+block content
+	a.back_link(href='/auth') < Назад
+	.title= 'СПЕЦПРОЕКТЫ'
+	br
+	a.add(href='/auth/specials/add') добавить спецпроект
+	br
+	br
+	.main_menu_block
+		each special in specials
+			.gallery
+				a.rm_special(href='#', id=special._id)= 'удалить '
+				!=' | '
+				a(href='/auth/specials/edit/' + special._id)= special.i18n.title.get('ru') ? special.i18n.title.get('ru') : 'Название спецпроекта'

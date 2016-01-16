@@ -1,0 +1,27 @@
+extends ../layout
+include ../events_list.jade
+
+block title
+	title= __('АРХСТРУКТУРА')
+
+block content_style
+	link(rel='stylesheet', type='text/css', href='/build/css/blocks_grid.css' + version)
+	link(rel='stylesheet', type='text/css', href='/build/css/events_subsidiary_after.css' + version)
+	link(rel='stylesheet', type='text/css', href='/build/css/main.css' + version)
+
+block content_scripts
+	script(type='text/javascript', src='/build/libs/js/imagesloaded.pkgd.min.js' + version)
+	script(type='text/javascript', src='/build/libs/js/masonry.pkgd.min.js' + version)
+	script(type='text/javascript', src='/build/libs/js/js.cookie.js' + version)
+	script(type='text/javascript', src='/build/js/main.js' + version)
+
+block content
+	.content_outer_block
+		marquee.content_news_block
+			each item in news
+				a.news_item(href='/news/' + item._id)
+					.item_title= item.i18n.title.get(locale)
+					.item_date= item.date.getDate() + ' ' + months[item.date.getMonth()] + ' ' + item.date.getFullYear()
+
+		.content_events_block
+			+eventsList(events)

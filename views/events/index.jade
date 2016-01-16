@@ -1,0 +1,34 @@
+extends ../layout
+include ../events_list.jade
+
+block title
+	title= __('Проекты')
+
+block content_style
+	link(rel='stylesheet', type='text/css', href='/build/css/blocks_grid.css' + version)
+	link(rel='stylesheet', type='text/css', href='/build/css/events.css' + version)
+
+block content_scripts
+	script(type='text/javascript', src='/build/libs/js/imagesloaded.pkgd.min.js' + version)
+	script(type='text/javascript', src='/build/libs/js/masonry.pkgd.min.js' + version)
+	script(type='text/javascript', src='/build/js/events.js' + version)
+
+block content
+	.content_title(class=type)
+	.additional_header
+		if (subsidiarys.length > 0)
+			.content_navigate_block.subsidiarys
+				.navigate_title= __('Место')
+				.navigate_items_block
+					each subsidiary in subsidiarys
+						//-.navigate_item(class=subsidiary._id.toString(), class=subsidiary.status == 'important' && 'important')= subsidiary.i18n.title.get(locale)
+						.navigate_item(class=subsidiary._id.toString())= subsidiary.i18n.title.get(locale)
+
+		if (categorys.length > 0)
+			.content_navigate_block.categorys
+				.navigate_title= __('Функция')
+				.navigate_items_block
+					each category in categorys
+						.navigate_item(class=category._id.toString())= category.i18n.title.get(locale)
+	.content_outer_block
+		+eventsList(events)

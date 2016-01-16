@@ -1,0 +1,37 @@
+extends ../layout
+
+block title
+	title= service.i18n.title.get('ru').toUpperCase()
+
+block content_style
+	link(rel='stylesheet', type='text/css', href='/build/css/services_item.css' + version)
+
+block content_scripts
+	script(type='text/javascript', src='/build/js/scroll.js' + version)
+	script(type='text/javascript', src='/build/js/services_item.js' + version)
+
+
+block content
+	.content_title= service.i18n.title.get('ru')
+	.content_body: != service.i18n.description.get('ru')
+
+	if (service.videos && service.videos.length == 1)
+		.content_video_block
+			each video in service.videos
+				.content_video_item.important_video: != video
+	else if (service.videos && service.videos.length > 1)
+		.content_video_block
+			each video in service.videos
+				.content_video_item: != video
+
+block scroll
+	- function get_locale(option, lang) {var locale = option.filter(function(locale) { return locale.lg == lang })[0]; if (locale) {return locale.value } else {return ''} }
+	.content_title
+	.content_scroll_items
+		each image in service.images
+			.content_scroll_item
+				img(src=image.thumb)
+				- var description = get_locale(image.description, locale)
+				if (description != '')
+					.content_image_description: != description
+

@@ -1,0 +1,103 @@
+.content_block_inner
+	max-width 1240px
+	margin 0 auto
+	min-width 400px
+
+.menu_items
+	a
+		&:nth-child(4)
+			border-bottom black 1px dotted
+
+.about_block
+	margin-right 7px
+	max-width 865px
+	float left
+
+.about_block, .partners_block
+	margin-top 35px
+
+.about_title
+	font 14pt/16pt 'Roboto'
+
+.about_description
+	width 450px
+	margin-top 5px
+	font 11pt/15pt 'RobotoL'
+	p
+		margin 0
+		&:nth-child(3)
+			margin-right 3px
+			float left
+
+.partners_block
+	width 783px
+	overflow hidden
+
+.partners_title
+	font 14pt/16pt 'Roboto'
+	margin-bottom 5px
+	&:nth-child(3)
+		margin-top 40px
+
+.partners_list
+	margin-top 2px
+	display table
+	margin-bottom 18px
+	&:nth-child(0)
+		outline 1px solid #fc0
+
+.patner_item
+	width 110px
+	height 65px
+	float left
+	background-size cover
+	margin-right 6px
+	&:last-child
+		margin-right 0px
+	&:hover
+		background-position 0px -64px
+	&.no_rollout
+		background-size contain
+		filter grayscale(1)
+		-webkit-filter grayscale(1)
+		background-position 50%
+		background-repeat no-repeat
+		&:hover
+			background-position 50%
+			filter none
+			-webkit-filter none
+	&.aqua
+		margin-right -19px
+		height 56px
+		background-size 91%
+		background-repeat no-repeat
+		margin-top 6px
+		&:hover
+			background-position 0 -58px
+
+#map-canvas
+	width 1240px
+	height 450px
+	margin 0px
+	padding 0px
+
+.social_block
+	margin-top 10px
+	margin-bottom 5px
+	width 220px
+	a
+		margin-right 15px
+		color #8b8b8b
+		text-decoration none
+		font 11pt/12pt 'Social'
+		&:hover
+			color black
+
+.big_image
+	height 485px
+	background url('../images/design/big_image.png') 50%
+	background-size cover
+
+.big_email
+	padding-bottom 5px
+

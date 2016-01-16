@@ -1,0 +1,36 @@
+extends ../../layout
+include ../forms.jade
+
+block title
+	title РЕДАКТИРОВАТЬ УСЛУГУ
+
+block content_style
+	link(rel='stylesheet', type='text/css', href='/build/libs/css/font-awesome.css')
+	link(rel='stylesheet', type='text/css', href='/build/libs/css/wysiwyg-editor.css')
+	link(rel='stylesheet', type='text/css', href='/build/css/add.css')
+
+block content_scripts
+	script(type='text/javascript', src='/build/libs/js/wysiwyg.js')
+	script(type='text/javascript', src='/build/libs/js/wysiwyg-editor.js')
+	script(type='text/javascript', src='/build/libs/js/jquery-ui-1.10.4.custom.min.js')
+	script(type='text/javascript', src='/build/libs/js/jquery.filedrop.js')
+	script(type='text/javascript', src='/build/js/upload.js')
+	script(type='text/javascript', src='/build/js/add.js')
+
+block content
+	.form_block
+		a.back_link(href='/auth/services') < Назад
+		button.toggle_eng(type='button') перевод
+		.title РЕДАКТИРОВАТЬ УСЛУГУ
+		form(action="", method="post", enctype="multipart/form-data")
+			.form_title Заголовок:
+			+form_text_single('title', service)
+			.form_title Описание:
+			+form_text_multi('description', service)
+			.form_title Номер:
+			input(type='text', name='num', value=service.num)
+			.form_title Изображения:
+			+form_images_upload(vacancy.images)
+			br
+			br
+			input(type='submit', value='отправить')

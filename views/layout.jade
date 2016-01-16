@@ -1,0 +1,30 @@
+doctype html
+html
+	head
+		include vars
+		include header
+	body
+		include counters
+		.maket
+			.main_block
+				.menu_block
+					.menu_block_inner
+						a.logo(href='/')
+						.menu_items
+							.menu_items_inner
+								a(href='/works')= __('Архитектура')
+								a(href='/designs')= __('Дизайн')
+								a(href='/publish')= __('Публикации')
+								a(href='/blog')= __('Блог')
+								a(href='/contacts')= __('Контакты')
+
+						.toggle_lang_block
+							if (locale == 'ru')
+								a.option.lang(href='/lang/en') EN
+							else
+								a.option.lang(href='/lang/ru') RU
+
+				.content_block
+					block content
+				.footer_block
+					block footer

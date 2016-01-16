@@ -1,0 +1,123 @@
+html, body, .maket
+	height 100%
+
+body
+	overflow hidden
+	margin 0
+	font-family 'Roboto', Arial, sans-serif
+
+.maket
+	width 100%
+	margin 0 auto
+	position relative
+	overflow-y auto
+	-webkit-overflow-scrolling touch
+
+.menu_block
+	margin-top 20px
+	position absolute
+	text-align center
+	z-index 100
+	width 100%
+
+.menu_block_inner
+	margin 0 auto
+	background-color rgba(255,255,255,0.7)
+	height 30px
+	position relative
+	padding-left 10px
+	max-width 1247px
+	min-width 635px
+
+.menu_items
+	left 220px
+	position absolute
+	margin 0
+	right 220px
+	text-align center
+	white-space nowrap
+	a
+		margin 6px 22px 0
+		font 11pt/13pt 'Roboto'
+		display inline-block
+		text-decoration none
+		color black
+		&:hover
+			border-bottom black 1px dotted
+
+.menu_items_inner
+	display inline
+	margin 0 auto
+
+.logo
+	margin-top 5px
+	margin-right 190px
+	width 17px
+	height 17px
+	background url('/images/design/logo.png') 50%
+	background-size cover
+	font 11pt/13pt 'Roboto'
+	display block
+	position relative
+	float left
+	&:after
+		content 'Народный архитектор'
+		position absolute
+		top 1px
+		white-space nowrap
+		left 25px
+		font 11pt/13pt 'Roboto'
+		color #000
+		text-align left
+	&.logo_eng
+		&:after
+			content 'NRDN'
+
+a
+	&.logo
+		&:hover
+			text-decoration none
+			&:after
+				border-bottom black 1px dotted
+
+.content_block
+	width 100%
+	min-height 200px
+	margin-top 80px
+	position absolute
+
+.background_works
+	width 100%
+	height 100%
+	position absolute
+	-webkit-filter brightness(75%)
+	filter brightness(75%)
+
+.background_item
+	width 100%
+	height 100%
+	opacity 0
+	position absolute
+	background no-repeat center center fixed
+	-webkit-background-size cover
+	-moz-background-size cover
+	-o-background-size cover
+	background-size cover
+
+.toggle_lang_block
+	position absolute
+	top 7px
+	right 7px
+	font 9pt/13pt 'Roboto'
+	a
+		color #000
+		text-decoration none
+		&:hover
+			color #000
+			border-bottom black 1px dotted
+
+*
+	-webkit-transition-property opacity
+	-webkit-transition-duration 0.5s
+	-webkit-transition-timing-function ease-in-out
+

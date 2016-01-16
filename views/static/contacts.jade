@@ -1,0 +1,51 @@
+extends ../layout
+
+block title
+	title= __('КОНТАКТЫ')
+
+block content_style
+	link(rel='stylesheet', type='text/css', href='/build/css/contacts.css' + version)
+
+block content_scripts
+	script(type='text/javascript', src='http://maps.googleapis.com/maps/api/js?sensor=false')
+	script(type='text/javascript', src='/build/js/g_maps.js' + version)
+
+
+block content
+	.content_block_inner
+		.map_block
+			#map-canvas
+		.about_block
+			.about_title
+				if (locale == 'ru')
+					| НАРОДНЫЙ АРХИТЕКТОР
+				else
+					| NRDN
+			.about_description
+				if (locale == 'ru')
+					include content/contacts/ru.html
+				else
+					include content/contacts/en.html
+				.social_block
+					a(href='https://www.facebook.com/nrdnru', target='_blank') 
+					a(href='http://vk.com/narodnij', target='_blank') 
+					//-a(href='https://twitter.com/Civ_architektor', target='_blank') 
+					a(href='http://instagram.com/narodnij', target='_blank') 
+
+		.partners_block
+			if (locale == 'ru')
+				.partners_title НАШИ ПАРТНЕРЫ
+			else
+				.partners_title OUR PARTNERS
+			.partners_list
+				a.patner_item.aqua(href='http://www.aqualogo-engineering.ru/', target='_blank', style='background-image: url(images/design/partners/partner_1.jpg)')
+				a.patner_item.no_rollout(href='http://www.izmailovsky-park.ru/', target='_blank', style='background-image: url(images/design/partners/partner_izm2.png)')
+				a.patner_item.no_rollout(href='http://muar.ru/', target='_blank', style='background-image: url(images/design/partners/partner_muar.png)')
+				a.patner_item.no_rollout(href='http://muar.ru/', target='_blank', style='background-image: url(images/design/partners/partner_gcmsir.png); margin-left: 20px;')
+			if (locale == 'ru')
+				.partners_title ИНФОРМАЦИОННЫЕ ПАРТНЕРЫ
+			else
+				.partners_title INFO PARTNERS
+			.partners_list
+				a.patner_item(href='http://www.interior.ru/', target='_blank', style='background-image: url(images/design/partners/partner_5.jpg)')
+				a.patner_item(href='http://prorus.net/', target='_blank', style='background-image: url(images/design/partners/partner_8.jpg)')

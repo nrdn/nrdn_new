@@ -1,0 +1,68 @@
+.content_title
+	margin-top 123px
+
+.additional_header
+	position fixed
+	top 77px
+	font-size 14px
+	.content_item
+		&:hover
+			&:after
+				position absolute
+				top 0
+				left 0
+				right 0
+				bottom 0
+				background rgba(0,0,0,0.2)
+				content ''
+				z-index 0
+	.content_navigate_block
+		float left
+		margin-bottom 0
+		position relative
+		overflow visible
+		&:hover
+			.navigate_items_block
+				display block
+		.navigate_title
+			padding 0 0 0 20px
+			height 21px
+			border-bottom 1px solid #ccc
+			&:after
+				content '|'
+				color #ccc
+				margin-left 20px
+			&:hover
+				border-bottom 1px solid #fff
+				//- border-left 1px solid #ccc
+				//- border-right 1px solid #ccc
+				&:after
+					content ''
+		.navigate_items_block
+			display none
+			position absolute
+			top 26px
+			left 0
+			text-align left
+			white-space nowrap
+			line-height 0
+			font-size 0
+			.navigate_item
+				display inline-block
+				line-height 15px
+				font-size 14px
+				float none
+				clear both
+				padding 0 8px 0 0
+				margin 0 8px 0 0
+				border-right 1px solid #ccc
+				&.important
+					&:after
+						border-right 1px solid #4b4b4b
+					&:first-child
+						padding-left 0
+						margin-left 0
+						margin-right 17px
+
+.item_category
+	display none

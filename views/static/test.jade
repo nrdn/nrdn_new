@@ -1,0 +1,19 @@
+extends ../layout
+
+block title
+	title Тест
+
+block content_style
+	link(rel='stylesheet', type='text/css', href='/build/css/blocks_grid.css' + version)
+	link(rel='stylesheet', type='text/css', href='/build/css/test.css' + version)
+
+block content_scripts
+
+block content
+	.content_title
+	.content_outer_block
+		| <div class="quizz-container" data-width="100%" data-height="auto" data-quiz="104916"></div>
+		|	<script src="//dcc4iyjchzom0.cloudfront.net/widget/loader.js" async></script>
+
+block scroll
+	.content_scroll_items

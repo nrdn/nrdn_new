@@ -1,0 +1,47 @@
+extends ../../layout
+include ../forms.jade
+
+block title
+	title ДОБАВИТЬ СПЕЦПРОЕКТ
+
+block content_style
+	link(rel='stylesheet', type='text/css', href='/build/libs/css/font-awesome.css')
+	link(rel='stylesheet', type='text/css', href='/build/libs/css/wysiwyg-editor.css')
+	link(rel='stylesheet', type='text/css', href='/build/css/add.css')
+
+block content_scripts
+
+	script(type='text/javascript', src='/build/libs/js/wysiwyg.js')
+	script(type='text/javascript', src='/build/libs/js/wysiwyg-editor.js')
+	script(type='text/javascript', src='/build/libs/js/jquery-ui-1.10.4.custom.min.js')
+	script(type='text/javascript', src='/build/libs/js/jquery.filedrop.js')
+	script(type='text/javascript', src='/build/js/upload.js')
+	script(type='text/javascript', src='/build/js/add.js')
+
+block content
+	.form_block
+		a.back_link(href='/auth/specials') < Назад
+		button.toggle_eng(type='button') перевод
+		.title ДОБАВИТЬ СПЕЦПРОЕКТ
+		form(action="", method="post", enctype="multipart/form-data")
+			.form_title Заголовок:
+			+form_text_single('title')
+			.form_title Подзаголовок:
+			+form_text_single('subtitle')
+			.form_title Описание:
+			+form_text_multi('description')
+			.form_title Ссылка:
+			input(type='text', name='url')
+			.note Если вставить ссылку на тест, то будет загружен тест.
+				br
+				| В других случаях -- фотогалерея.
+				br
+				| Фоновое изображение -- первая фотография.
+			.form_title Изображения:
+			.form_images_upload
+				.form_desc_title Перетащи сюда
+			.form_title Номер:
+			input(type='text', name='num')
+			br
+			br
+			input(type='submit', value='отправить')
