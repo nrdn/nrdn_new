@@ -1,19 +1,9 @@
-mixin compareInterval(start, end)
-	if (start.getUTCDate() == end.getUTCDate() && start.getUTCMonth() == end.getUTCMonth() && start.getUTCFullYear() == end.getUTCFullYear())
-		!= ('0' + start.getUTCDate()).slice(-2) + '/' + ('0' + (start.getUTCMonth() + 1)).slice(-2) + '/' + ('0' + start.getUTCFullYear()).slice(-2)
-	else
-		!= ('0' + start.getUTCDate()).slice(-2) + '/' + ('0' + (start.getUTCMonth() + 1)).slice(-2) + '/' + ('0' + start.getUTCFullYear()).slice(-2)
-		!= ' - '
-		!= ('0' + end.getUTCDate()).slice(-2) + '/' + ('0' + (end.getUTCMonth() + 1)).slice(-2) + '/' + ('0' + end.getUTCFullYear()).slice(-2)
-
 mixin eventsList(events)
 	each event in events
 		if (event.status == 'important')
 			a.content_item.event.imp(href='/events/' + event.type +'/' + event._id)
 				.item_image(style='background-image: url(' + (event.images && event.images.length > 0 && event.images[0].thumb)+ ')')
 				.item_description
-					if (!event.interval.hidden)
-						.item_date: +compareInterval(event.interval.start, event.interval.end)
 					if (event.subsidiary)
 						.item_subs= event.subsidiary.i18n.title.get(locale)
 					if (locale == 'ru')
@@ -26,8 +16,6 @@ mixin eventsList(events)
 			a.content_item.event(href='/events/' + event.type +'/' + event._id)
 				.item_image(style='background-image: url(' + (event.images && event.images.length > 0 && event.images[0].thumb)+ ')')
 				.item_description
-					if (!event.interval.hidden)
-						.item_date: +compareInterval(event.interval.start, event.interval.end)
 					if (event.subsidiary)
 						.item_subs= event.subsidiary.i18n.title.get(locale)
 					if (locale == 'ru')

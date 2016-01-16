@@ -52,15 +52,9 @@ block content
 				//- option(value='xxi') Дискуссионная площадка Тверская XXI
 			.form_title Дата публикации:
 			+form_calendar('date')
-			.form_title Дата начала события:
-			+form_calendar('date_start')
-			.form_title Дата окончания события:
-			+form_calendar('date_end')
 			br
 			br
-			input(type='checkbox', name='date_hidden', value='true')
-			!=' скрыть дату'
-			.form_title Видео:
+			.form_title Лого:
 			+form_multiple_input('videos')
 			.form_title Изображения:
 			.form_images_upload

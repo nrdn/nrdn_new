@@ -138,11 +138,6 @@ var eventSchema = new Schema({
 	description: { type: String, trim: true, locale: true },
 	subsidiary: { type: Schema.Types.ObjectId, ref: 'Subsidiary' },
 	categorys: [{ type: Schema.Types.ObjectId, ref: 'Category' }],
-	interval: {
-		hidden: Boolean,
-		start: Date,
-		end: Date
-	},
 	status: String,
 	type: String,
 	videos: [{type: String, trim: true}],
