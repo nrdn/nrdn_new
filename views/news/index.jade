@@ -1,17 +1,15 @@
 extends ../layout
 
 block title
-	title= __('АНОНСЫ')
+	title= __('БЛОГ')
 
 block content_style
 	//- link(rel='stylesheet', type='text/css', href='/build/css/blocks_grid.css' + version)
-	link(rel='stylesheet', type='text/css', href='/build/css/news.css' + version)
-	link(rel='stylesheet', type='text/css', href='/build/css/news_mobile.css' + version)
+	link(rel='stylesheet', type='text/css', href='/build/css/blog.css' + version)
 
 block content_scripts
-	script(type='text/javascript', src='/build/libs/js/masonry.pkgd.min.js' + version)
-	script(type='text/javascript', src='/build/js/scroll.js' + version)
-	script(type='text/javascript', src='/build/js/news.js' + version)
+	//-script(type='text/javascript', src='/build/libs/js/masonry.pkgd.min.js' + version)
+	//-script(type='text/javascript', src='/build/js/news.js' + version)
 
 mixin trimString(str, length)
 	if (str.length > length)
@@ -23,11 +21,13 @@ mixin trimString(str, length)
 
 
 block content
-	.content_title= __('Анонсы')
-	.content_outer_block
+	.content_block_inner
 		each item in news
-			a.content_item.news.important(href='/news/' + item._id)
-				.item_description
-					.item_title= item.i18n.title.get(locale)
-					.item_body: +trimString(item.i18n.description.get(locale).replace(/(<([^>]+)>)/ig, ''), 100)
-					.item_date= item.date.getDate() + ' ' + months[item.date.getMonth()] + ' ' + item.date.getFullYear()
+			.post_item_block
+				a.post_title.main(href='/news/' + item._id)
+					img.post_img(src=item.images[0].thumb)
+				.post_dscription_block
+					a.post_title(href='/news/' + item._id)= item.i18n.title.get(locale)
+				.post_body: +trimString(item.i18n.description.get(locale).replace(/(<([^>]+)>)/ig, ''), 100)
+		.scroll_top
+			.top_text ▲ Наверх
