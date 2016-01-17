@@ -30,25 +30,18 @@ block content
 			+form_text_single('title', event)
 			.form_title Описание:
 			+form_text_multi('description', event)
-			.form_title Категории:
+			.form_title Тег:
 			+form_multiple_select('categorys', categorys, event.categorys)
-			.form_title Место:
+			.form_title Категория:
 			+form_single_select('subsidiary', subsidiarys, event.subsidiary)
 			.form_title Статус
 			select(name='status')
 				option(value='') обычный
-				option(value='important', selected=event.status == 'important') важный
-				option(value='out', selected=event.status == 'out') в разделе
-				option(value='hidden', selected=event.status == 'hidden') скрытый
+				option(value='archive', selected=event.status == 'archive') в архиве
 			.form_title Тип:
 			select(name='type')
-				option(value='exhibition', selected=event.type == 'exhibition') Выставка
-				option(value='excursion', selected=event.type == 'excursion') Экскурсия
-				option(value='lecture', selected=event.type == 'lecture') Лекция
-				option(value='action', selected=event.type == 'action') Мероприятие
-				option(value='teach', selected=event.type == 'teach') Центр прикладной педагогики
-				option(value='education', selected=event.type == 'education') Образовательные программы
-				option(value='special', selected=event.type == 'special') Спецпроекты
+				option(value='architecture', selected=event.type == 'architecture') Архитектура
+				option(value='design', selected=event.type == 'design') Дизайн
 			.form_title Дата публикации:
 			+form_calendar('date', event.date)
 			br

@@ -1,26 +1,15 @@
 mixin eventsList(events)
 	each event in events
-		if (event.status == 'important')
-			a.content_item.event.imp(href='/events/' + event.type +'/' + event._id)
-				.item_image(style='background-image: url(' + (event.images && event.images.length > 0 && event.images[0].thumb)+ ')')
-				.item_description
-					if (event.subsidiary)
-						.item_subs= event.subsidiary.i18n.title.get(locale)
-					if (locale == 'ru')
-						.item_category.ru(class=event.type, href='/events/' + event.type)
-					else
-						.item_category.en(class=event.type, href='/events/' + event.type)
-
-					.item_title= event.i18n.title.get(locale)
+		if (event.subsidiary)
+			style= 'a[data-type='+ event.subsidiary.i18n.title.get(locale) + '] svg {fill: ' + event.subsidiary.i18n.adress.get('ru') + ';}'
+			a.work_item(href='/events/' + event.type +'/' + event._id + '', data-type=event.subsidiary.i18n.title.get(locale), class=event.subsidiary.i18n.title.get('en') + ' ' + event.date.getFullYear() + ' ' + event.status)
+				.item_image.work_images
+					.work_image.work_image_big(style='background-image: url(' + (event.images && event.images.length > 0 && event.images[0].thumb)+ ')')
+				.work_logo!= event.videos[0]
+				.work_title= event.i18n.title.get(locale)
 		else
-			a.content_item.event(href='/events/' + event.type +'/' + event._id)
-				.item_image(style='background-image: url(' + (event.images && event.images.length > 0 && event.images[0].thumb)+ ')')
-				.item_description
-					if (event.subsidiary)
-						.item_subs= event.subsidiary.i18n.title.get(locale)
-					if (locale == 'ru')
-						.item_category.ru(class=event.type, href='/events/' + event.type)
-					else
-						.item_category.en(class=event.type, href='/events/' + event.type)
-
-					.item_title= event.i18n.title.get(locale)
+			a.work_item.content_item(href='/events/' + event.type +'/', class=event.date.getFullYear() + ' ' + event.status)
+				.item_image.work_images
+					.work_image.work_image_big(style='background-image: url(' + (event.images && event.images.length > 0 && event.images[0].thumb)+ ')')
+				.work_logo!= event.videos[0]
+				.work_title= event.i18n.title.get(locale)

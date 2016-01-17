@@ -30,26 +30,18 @@ block content
 			+form_text_single('title')
 			.form_title Описание:
 			+form_text_multi('description')
-			.form_title Категории:
+			.form_title Тег:
 			+form_multiple_select('categorys', categorys)
-			.form_title Место:
+			.form_title Категория:
 			+form_single_select('subsidiary', subsidiarys)
 			.form_title Статус
 			select(name='status')
 				option(value='') обычный
-				option(value='important') важный
-				option(value='out') в разделе
-				option(value='hidden') скрытый
+				option(value='archive') в архиве
 			.form_title Тип:
 			select(name='type')
-				option(value='exhibition') Выставка
-				option(value='excursion') Экскурсия
-				option(value='lecture') Лекция
-				option(value='action') Мероприятие
-				option(value='teach') Центр прикладной педагогики
-				option(value='education') Образовательные программы
-				option(value='special') Спецпроекты
-				//- option(value='xxi') Дискуссионная площадка Тверская XXI
+				option(value='architecture') Архитектура
+				option(value='design') Дизайн
 			.form_title Дата публикации:
 			+form_calendar('date')
 			br

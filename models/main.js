@@ -115,21 +115,7 @@ var hallSchema = new Schema({
 
 var subsidiarySchema = new Schema({
 	title: { type: String, trim: true, locale: true },
-	description: { type: String, trim: true, locale: true },
 	adress: { type: String, trim: true, locale: true },
-	status: String,
-	logo: {
-		path: String,
-		position: {
-			x: String,
-			y: String
-		}
-	},
-	images: [{
-		description: { type: String, trim: true, locale: true },
-		original: String,
-		thumb: String
-	}],
 	date: {type: Date, default: Date.now}
 });
 

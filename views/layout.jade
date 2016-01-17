@@ -10,13 +10,16 @@ html
 			.main_block
 				.menu_block
 					.menu_block_inner
-						a.logo(href='/')
+						if (locale == 'ru')
+							a.logo(href='/')
+						else
+							a.logo.logo_eng(href='/')
 						.menu_items
 							.menu_items_inner
-								a(href='/works')= __('Архитектура')
-								a(href='/designs')= __('Дизайн')
+								a(href='/events/architecture')= __('Архитектура')
+								a(href='/events/design')= __('Дизайн')
 								a(href='/publish')= __('Публикации')
-								a(href='/blog')= __('Блог')
+								a(href='/news')= __('Блог')
 								a(href='/contacts')= __('Контакты')
 
 						.toggle_lang_block
