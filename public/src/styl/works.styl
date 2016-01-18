@@ -1,0 +1,125 @@
+.content_block_inner
+	max-width 1260px
+	margin 0 auto
+	min-width 400px
+
+.menu_block
+	position fixed
+
+.menu_items
+	a
+		&:nth-child(1)
+			border-bottom black 1px dotted
+
+.works_block
+	overflow auto
+
+.work_item
+	width 120px
+	height 120px
+	margin-bottom 20px
+	margin-left 20px
+	float left
+	text-decoration none
+	color black
+	&.archive
+		display none
+		opacity 0
+	&:hover
+		.work_images
+			opacity 1
+
+.work_item:hover .work_logo, .work_item:hover .work_title
+	display none
+
+.urbanism
+	svg
+		fill #003ca5
+
+.architecture
+	svg
+		fill #00806e
+
+.urban_projects
+	svg
+		fill #fde910
+
+.exhibitions
+	svg
+		fill #8f1537
+
+.industrial_design
+	svg
+		fill #934bff
+
+.navigation
+	svg
+		fill #06262d
+
+.installation
+	svg
+		fill #EA00B2
+
+.graphic_design
+	svg
+		fill #ea0029
+
+.work_tag_title
+	margin-bottom 30px
+	text-transform uppercase
+	font 14pt/16pt 'RobotoT'
+
+.work_logo
+	width 75px
+	height 75px
+	position relative
+	margin 0 auto
+	line-height 75px
+	text-align center
+	svg
+		max-width 75px!important
+		max-height 75px!important
+		margin 0 auto
+		vertical-align middle
+
+.work_title
+	margin-top 5px
+	width 120px
+	font 9pt/11pt 'RobotoL'
+	display block
+	text-align center
+
+.work_images
+	position absolute
+	opacity 0
+
+.work_image
+	width 120px
+	height 120px
+	position absolute
+	background-size cover
+	background-position center
+
+.sort_item
+	display inline
+	cursor pointer
+	margin-right 10px
+	&:hover
+		border-bottom black 1px dotted
+
+.works_tags_sort_block
+	text-align center
+	width 350px
+	background-color rgba(255,255,255,0.7)
+	font 10pt/12pt 'Roboto'
+	position fixed
+	top 95%
+	left 50%
+	margin-left -175px
+	left 50%
+
+.work_tag
+	margin-top 10px
+	overflow hidden
+	&:first-child
+		margin-top 0px

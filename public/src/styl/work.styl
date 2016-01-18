@@ -1,0 +1,110 @@
+.maket
+	cursor pointer
+
+.content_block
+	margin-top 0px
+	width 100%
+	min-height 100%
+	position absolute
+
+.content_block_inner
+	max-width 1257px
+	margin 0 auto
+	min-width 400px
+
+.content_block, .menu_block
+	-webkit-user-select none
+	-moz-user-select none
+	-ms-user-select none
+	user-select none
+
+.menu_items_inner
+	a
+		&:nth-child(1)
+			border-bottom black 1px dotted
+
+.work_description_block
+	width 350px
+	float right
+	padding 5px
+	margin-top 70px
+	overflow hidden
+	background-color rgba(255,255,255,0.7)
+	&:hover
+		cursor pointer
+		background-color rgba(255,255,255,1)
+
+.hide
+	width 20px
+	height 20px
+	text-align center
+	&:after
+		font 18px/22px 'Social'
+		color black
+		content ''
+
+.background_item
+	&:last-child
+		opacity 1
+
+.work_item
+	&:first-child
+		display block
+
+.work_title
+	font 12pt/14pt 'RobotoL'
+	text-transform uppercase
+	margin-bottom 5px
+	&:hover
+		-webkit-user-select text
+		-moz-user-select text
+		-ms-user-select text
+		user-select text
+
+.work_description
+	font 10pt/12pt 'RobotoL'
+
+.footer_block
+	width 100%
+	position absolute
+	z-index 999
+	top 95%
+	text-align center
+	-webkit-user-select none
+
+.dot
+	margin-right 15px
+	color white
+	display inline
+	cursor default
+
+.glow
+	-webkit-filter none
+	filter none
+
+.round_click_block
+	width 300px
+	height 300px
+	border 2px solid white
+	border-radius 150px
+	color white
+	position absolute
+	top 50%
+	left 50%
+	margin -150px 0 0 -150px
+
+.round_dot
+	width 16px
+	height 16px
+	top 50%
+	left 50%
+	margin -8px 0 0 -8px
+	position absolute
+	border-radius 10px
+	background-color white
+
+*
+	-webkit-transition-property opacity
+	-webkit-transition-duration 0.5s
+	-webkit-transition-timing-function ease-in-out
+
