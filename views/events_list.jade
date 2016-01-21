@@ -15,4 +15,4 @@ mixin eventsList(events)
 
 	each event in events
 		if (event.subsidiary)
-			style= 'a[data-type='+ event.subsidiary.i18n.title.get(locale) + '] svg {fill: ' + event.subsidiary.i18n.adress.get('ru') + ';}'
+			style= 'a[data-type=\''+ event.subsidiary.i18n.title.get(locale) + '\'] svg {fill: ' + event.subsidiary.i18n.adress.get('ru') + ';}'
