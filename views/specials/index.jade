@@ -26,7 +26,7 @@ block content
 	.content_title Спецпроекты
 	.content_outer_block
 		each special in specials
-			a.content_item.collect(href='/specials/' + special._id)
+			a.content_item.collect(href='specials/' + special._id)
 				img.item_image(src=special.images[0].thumb)
 				.item_description
 					.item_title= special.i18n.title.get(locale)
