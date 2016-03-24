@@ -138,7 +138,7 @@ exports.add_form = function(req, res) {
 		});
 	}, function() {
 		news.save(function() {
-			res.redirect('/auth/news');
+			res.redirect('/auth/slides');
 		});
 	});
 
