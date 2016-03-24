@@ -74,7 +74,6 @@ exports.add_form = function(req, res) {
 	news.date = new Date(Date.UTC(post.date.year, post.date.month, post.date.date));
 	news.status = post.status;
 
-	news.videos = post.videos.filter(function(n){ return n != '' });
 
 
 	if (!post.images) {
@@ -89,8 +88,8 @@ exports.add_form = function(req, res) {
 	var public_path = __appdir + '/public';
 
 	var images_path = {
-		original: '/images/news/' + news._id + '/original/',
-		thumb: '/images/news/' + news._id + '/thumb/',
+		original: '/images/slides/' + news._id + '/original/',
+		thumb: '/images/slides/' + news._id + '/thumb/',
 	}
 
 	mkdirp.sync(public_path + images_path.original);
@@ -118,7 +117,7 @@ exports.add_form = function(req, res) {
 		var original_path = images_path.original + name + '.jpg';
 		var thumb_path = images_path.thumb + name + '.jpg';
 
-		gm(public_path + image.path).resize(1600, false).write(public_path + thumb_path, function() {
+		gm(public_path + image.path).resize(2600, false).write(public_path + thumb_path, function() {
 			gm(public_path + image.path).write(public_path + original_path, function() {
 				var image_obj = {};
 				image_obj.original = original_path;
@@ -195,14 +194,14 @@ exports.edit_form = function(req, res) {
 		news.date = new Date(Date.UTC(post.date.year, post.date.month, post.date.date));
 		news.status = post.status;
 
-		news.videos = post.videos.filter(function(n){ return n != '' });
+
 
 
 		var public_path = __appdir + '/public';
 
 		var images_path = {
-			original: '/images/news/' + news._id + '/original/',
-			thumb: '/images/news/' + news._id + '/thumb/',
+			original: '/images/slides/' + news._id + '/original/',
+			thumb: '/images/slides/' + news._id + '/thumb/',
 		}
 
 		del.sync([public_path + images_path.original, public_path + images_path.thumb]);
@@ -243,7 +242,7 @@ exports.edit_form = function(req, res) {
 			var original_path = images_path.original + name + '.jpg';
 			var thumb_path = images_path.thumb + name + '.jpg';
 
-			gm(public_path + image.path).resize(1600, false).write(public_path + thumb_path, function() {
+			gm(public_path + image.path).resize(2600, false).write(public_path + thumb_path, function() {
 				gm(public_path + image.path).write(public_path + original_path, function() {
 					var image_obj = {};
 					image_obj.original = original_path;
@@ -281,7 +280,7 @@ exports.edit_form = function(req, res) {
 exports.remove = function(req, res) {
 	var id = req.body.id;
 	News.findByIdAndRemove(id, function() {
-		del.sync(__appdir + '/public/images/news/' + id);
+		del.sync(__appdir + '/public/slides/news/' + id);
 		res.send('ok');
 	});
 }

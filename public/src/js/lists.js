@@ -10,7 +10,7 @@ $(document).ready(function() {
 	}
 
 	$('.rm_user').on('click', {path:'/auth/users/remove', description: 'Удалить пользователя?'}, remove);
-	$('.rm_news').on('click', {path:'/auth/news/remove', description: 'Удалить новость?'}, remove);
+	$('.rm_news').on('click', {path:'/auth/slides/remove', description: 'Удалить слайд?'}, remove);
 	$('.rm_event').on('click', {path:'/auth/events/remove', description: 'Удалить событие?'}, remove);
 	$('.rm_category').on('click', {path:'/auth/categorys/remove', description: 'Удалить категорию?'}, remove);
 	$('.rm_collect').on('click', {path:'/auth/collects/remove', description: 'Удалить коллекцию?'}, remove);

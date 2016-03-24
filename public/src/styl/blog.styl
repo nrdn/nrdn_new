@@ -1,7 +1,14 @@
-.content_block_inner
-	max-width 1240px
-	margin 0 auto
-	min-width 400px
+body
+	background #000
+	font-family 'helveticaneuecyrbold'
+	margin 0
+	padding 0
+	color #fff
+	overflow hidden
+	.content_block_inner
+		width 1840px
+		height 980px
+		margin 50px
 
 .menu_block
 	position absolute
@@ -11,56 +18,71 @@
 		&:nth-child(4)
 			border-bottom black 1px dotted
 
-.post_item_block
-	padding-bottom 100px
+.left
+	width 1420px
+	height 980px
 	overflow hidden
-	&:hover
-		background-color #F8F8F8
-
-.post_img
-	width 100%
-	height auto
-
-.post_title
-	width 280px
-	font 16pt/18pt 'Roboto'
-	color black
-	text-transform uppercase
-	text-decoration none
-
-.post_body
-	max-width 865px
-	margin-top 25px
-	margin-left 375px
-	font 12pt/16pt 'RobotoL'
-
-.post_social
-	margin-top 15px
-	width 150px
-
-.post_dscription_block
-	width 280px
-	margin-top 25px
 	float left
-
-.scroll_top
-	width 120px
-	height 25px
-	margin-left -60px
-	top 94%
-	left 47%
-	position fixed
-	background-color rgba(255,255,255,0.7)
-	z-index 9999
-	cursor pointer
-	display none
-	padding-top 5px
-	padding-left 60px
-	&:hover
-		background-color white
-		.top_text
-			border-bottom black 1px dotted
-
-.top_text
-	display inline
-	font 10pt/12pt 'Roboto'
+	position relative
+	.post_item_block
+		position absolute
+		top 0
+		left 0
+		width 100%
+		height 100%
+		display none
+		background #fff
+		&:nth-child(1)
+			display block
+		.post_img
+			width 100%
+			height 935px
+			background-color #fff
+			background-position 50%
+			background-repeat no-repeat
+			background-size contain
+		.content_photo
+			display none
+			position relative
+			&:nth-child(1)
+				display block
+			.content_image_hover
+				height 100%
+				background-position 50%
+				background-size contain
+				background-repeat no-repeat
+				width 60%
+				position absolute
+				top 0
+				right 0
+				cursor pointer
+			.prev_arrow
+				position absolute
+				top 0
+				left 0
+				bottom 0
+				width 40%
+				height 100%
+				cursor pointer
+		.post_title
+			padding-top 10px
+			text-transform uppercase
+			text-decoration none
+			background #000
+			height 40px
+.right
+	float left
+	width 400px
+	margin-left 10px
+	.post_news_titles
+		display block
+		overflow hidden
+		text-decoration none
+		color #fff
+		cursor pointer
+		.post_news_title
+			font-size 60px
+			line-height 57px
+			margin-bottom 17px
+		&.active
+			color #FFF8AD

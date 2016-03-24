@@ -146,12 +146,12 @@ app.route('/events/:type').get(events.index);
 app.route('/events/:type/:id').get(events.event);
 
 // === News Route
-app.route('/news')
+app.route('/slides')
 	.get(globals.imageGallery('main'), news.index)
 	.post(news.get_news);
 
 // === News Route
-app.route('/news/:id').get(news.news);
+app.route('/slides/:id').get(news.news);
 
 
 // === Partnership Route
@@ -276,23 +276,23 @@ app.route('/auth/users/remove')
 
 
 // === Admin news Route
-app.route('/auth/news').get(checkAuth, admin_news.list);
+app.route('/auth/slides').get(checkAuth, admin_news.list);
 
 
 // === Admin @add news Route
-app.route('/auth/news/add')
+app.route('/auth/slides/add')
 	 .get(checkAuth, admin_news.add)
 	 .post(checkAuth, admin_news.add_form);
 
 
 // === Admin @edit news Route
-app.route('/auth/news/edit/:id')
+app.route('/auth/slides/edit/:id')
 	 .get(checkAuth, admin_news.edit)
 	 .post(checkAuth, admin_news.edit_form);
 
 
 // === Admin @remove news Route
-app.route('/auth/news/remove')
+app.route('/auth/slides/remove')
 	 .post(checkAuth, admin_news.remove);
 
 

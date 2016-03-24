@@ -1,7 +1,7 @@
 extends ../../layout
 
 block title
-	title БЛОГ
+	title СЛАЙДЫ
 
 block content_style
 	link(rel='stylesheet', type='text/css', href='/build/css/add.css')
@@ -11,9 +11,9 @@ block content_scripts
 
 block content
 	a.back_link(href='/auth') < Назад
-	.title БЛОГ
+	.title СЛАЙДЫ
 	br
-	a.add(href='/auth/news/add') добавить запись
+	a.add(href='/auth/slides/add') добавить запись
 	br
 	br
 	.main_menu_block
@@ -21,4 +21,4 @@ block content
 			.news
 				a.rm_news(href='#', id=item._id)= 'удалить '
 				!=' | '
-				a(href='/auth/news/edit/' + item._id)= item.i18n.title.get('ru')
+				a(href='/auth/slides/edit/' + item._id)= item.i18n.title.get('ru')

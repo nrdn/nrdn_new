@@ -2,7 +2,7 @@ extends ../../layout
 include ../forms.jade
 
 block title
-	title ДОБАВИТЬ НОВОСТЬ
+	title ДОБАВИТЬ СЛАЙД
 
 block content_style
 	link(rel='stylesheet', type='text/css', href='/build/libs/css/font-awesome.css')
@@ -29,10 +29,10 @@ block content_scripts
 
 block content
 	.form_block
-		a.back_link(href='/auth/news') < Назад
+		a.back_link(href='/auth/slides') < Назад
 		button.toggle_eng(type='button') перевод
-		.title ДОБАВИТЬ НОВОСТЬ
-		form(action="/auth/news/add", method="post")
+		.title ДОБАВИТЬ СЛАЙД
+		form(action="/auth/slides/add", method="post")
 			.form_title Заголовок:
 			+form_text_single('title')
 			.form_title Описание:
@@ -44,8 +44,6 @@ block content
 				option(value='hidden') скрытый
 			.form_title Дата публикации:
 			+form_calendar('date')
-			//-.form_title Видео:
-			//-+form_multiple_input('videos')
 			.form_title Изображения:
 			.form_images_upload
 				.form_desc_title Перетащи сюда
