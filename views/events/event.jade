@@ -8,8 +8,24 @@ block title
 	if (event.i18n.description.get(locale))
 		meta(name='description', content=event.i18n.description.get(locale).replace(/<[^>]+>/g,' '))
 		meta(property='og:description', content=event.i18n.description.get(locale).replace(/<[^>]+>/g,' '))
-	each image in event.images
-		meta(property='og:image', content=image.thumb)
+
+
+		meta(itemprop='name', content=event.i18n.description.get(locale).replace(/<[^>]+>/g,' '))
+		meta(itemprop='description', content=event.i18n.description.get(locale).replace(/<[^>]+>/g,' '))
+		meta(name='twitter:card', content='summary')
+		each image in event.images
+			meta(name='twitter:site', content=image.thumb)
+		meta(name='twitter:title', content=event.i18n.description.get(locale).replace(/<[^>]+>/g,' '))
+		meta(name='twitter:description', content=event.i18n.description.get(locale).replace(/<[^>]+>/g,' '))
+		meta(property='og:type', content='website')
+		meta(property='og:title', content=event.i18n.description.get(locale).replace(/<[^>]+>/g,' '))
+		meta(property='og:description', content=event.i18n.description.get(locale).replace(/<[^>]+>/g,' '))
+		meta(name='description', content=event.i18n.description.get(locale).replace(/<[^>]+>/g,' '))
+		each image in event.images
+			meta(property='og:image', content=image.thumb)
+			meta(property='og:image:type', content='image/jpeg')
+			meta(property='og:image:width' content='320')
+			meta(property='og:image:height', content='459')
 
 block content_style
 	link(rel='stylesheet', type='text/css', href='/build/css/work.css' + version)
