@@ -12,5 +12,7 @@ block content_scripts
 
 block content
 	.content_block_inner
+		.a_issuuembed
+			a(href="museum")
 		each magazine in magazines
 			.issuuembed(data-configid!= magazine.url)

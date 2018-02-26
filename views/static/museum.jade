@@ -1,0 +1,14 @@
+extends ../layout
+
+block title
+	title= __('Музей. Проектируя будущее')
+
+block content_style
+	link(rel='stylesheet', type='text/css', href='/build/css/museum.css' + version)
+
+block content_scripts
+	script(type='text/javascript', src='//e.issuu.com/embed.js', async='true')
+
+block content
+	.content_iframe
+		.issuuembed(data-configid='1915711/57654524')

@@ -785,7 +785,7 @@ app.route('/test').get(content.test);
 //-app.route('/services').get(globals.imageGallery('main'), content.services);
 
 // === Schedule Route
-app.route('/schedule').get(globals.imageGallery('main'), content.schedule);
+app.route('/museum').get(content.museum);
 
 // === Contacts Route
 app.route('/contacts').get(content.contacts);
