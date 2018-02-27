@@ -1,7 +1,31 @@
 extends ../layout
 
 block title
-	title= __('Музей. Проектируя будущее')
+	title И.М. Коробьина #МУЗЕЙ: неслучившееся будущее
+	meta(itemprop='name', content='И.М. Коробьина #МУЗЕЙ: неслучившееся будущее')
+	meta(name='description', content='И.М. Коробьина #МУЗЕЙ: неслучившееся будущее')
+
+
+	meta(name='description', content='И.М. Коробьина #МУЗЕЙ: неслучившееся будущее')
+	meta(property='og:description', content='И.М. Коробьина #МУЗЕЙ: неслучившееся будущее')
+
+
+	meta(itemprop='name', content='И.М. Коробьина #МУЗЕЙ: неслучившееся будущее')
+	meta(itemprop='description', content='И.М. Коробьина #МУЗЕЙ: неслучившееся будущее')
+	meta(name='twitter:card', content='summary')
+
+	meta(name='twitter:site', content='http://nrdn.ru/images/design/museum_s.jpg')
+	meta(name='twitter:title', content='И.М. Коробьина #МУЗЕЙ: неслучившееся будущее')
+	meta(name='twitter:description', content='И.М. Коробьина #МУЗЕЙ: неслучившееся будущее')
+	meta(property='og:type', content='website')
+	meta(property='og:title', content='И.М. Коробьина #МУЗЕЙ: неслучившееся будущее')
+	meta(property='og:description', content='И.М. Коробьина #МУЗЕЙ: неслучившееся будущее')
+	meta(name='description', content='И.М. Коробьина #МУЗЕЙ: неслучившееся будущее')
+
+	meta(property='og:image', content='http://nrdn.ru/images/design/museum_s.jpg')
+	meta(property='og:image:type', content='image/jpeg')
+	meta(property='og:image:width' content='320')
+	meta(property='og:image:height', content='459')
 
 block content_style
 	link(rel='stylesheet', type='text/css', href='/build/css/museum.css' + version)
@@ -10,5 +34,6 @@ block content_scripts
 	script(type='text/javascript', src='//e.issuu.com/embed.js', async='true')
 
 block content
+	.museum_title И.М. Коробьина #МУЗЕЙ: неслучившееся будущее
 	.content_iframe
 		.issuuembed(data-configid='1915711/57654524')
