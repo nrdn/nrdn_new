@@ -21,10 +21,8 @@ function searchNormalize(search) {
 exports.search = function(req, res) {
 	var search = searchNormalize(req.body.search);
 
-	Exhibit.find({ $text: { $search: search } }, { score : { $meta: 'textScore' } }).sort({ score : { $meta : 'textScore' } }).select('title _id').exec(function(err, exhibits) {
-		Event.find({ $text: { $search: search } }, { score : { $meta: 'textScore' } }).sort({ score : { $meta : 'textScore' } }).select('title _id type').exec(function(err, events) {
-			res.send({events: events, exhibits: exhibits});
-		});
+	Event.find({ $text: { $search: search } }, { score : { $meta: 'textScore' } }).sort({ score : { $meta : 'textScore' } }).select('title _id type').exec(function(err, events) {
+		res.send({events: events, exhibits: exhibits});
 	});
 }
 
@@ -32,14 +30,4 @@ exports.search = function(req, res) {
 exports.locale = function(req, res) {
   res.cookie('locale', req.params.locale);
   res.redirect('back');
-}
-
-
-exports.imageGallery = function(type) {
-  return function(req, res, next) {
-    Gallery.random({'type': type}, 25, 'year', function(err, images) {
-    	res.locals.images = images;
-    	next();
-    });
-  }
 }

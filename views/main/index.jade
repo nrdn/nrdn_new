@@ -22,7 +22,7 @@ block content
 		each event in events
 			.work_item
 				.work_logo!= event.videos[0]
-				.work_tag= event.subsidiary.i18n.title.get(locale)
+				.work_tag= event.subsidiary ? event.subsidiary.i18n.title.get(locale) : ''
 				.work_title
 					a(href='/events/' + event.type + '/' + event._id)= event.i18n.title.get(locale)
 

@@ -131,7 +131,7 @@ function checkAuth (req, res, next) {
 
 // === Main Route
 app.route('/')
-	.get(globals.imageGallery('main'), main.index)
+	.get(main.index)
 	.post(main.get_events);
 
 // === Events Route
@@ -145,100 +145,20 @@ app.route('/events/:type').get(events.index);
 // === Events Tag Route
 app.route('/events/:type/:id').get(events.event);
 
-// === News Route
-app.route('/slides')
-	.get(globals.imageGallery('main'), news.index)
-	.post(news.get_news);
-
-// === News Route
-app.route('/slides/:id').get(news.news);
-
-
-// === Partnership Route
-app.route('/partnership')
-	.get(content.partnership)
-
-// === Serviceship Route
-app.route('/serviceship')
-	.get(content.serviceship)
-
-
-// === Vacancys Route
-app.route('/vacancys')
-	.get(globals.imageGallery('main'), vacancys.index)
-	.post(vacancys.vacancys);
-
-// === Vacancys Route
-app.route('/vacancys/:id').get(globals.imageGallery('main'), vacancys.vacancys);
-
-
-// === partners Route
-app.route('/partners')
-	.get(globals.imageGallery('main'), partners.index)
-	.post(partners.partners);
-
-// === partners Route
-app.route('/partners/:id').get(globals.imageGallery('main'), partners.partners);
-
-
-// === services Route
-app.route('/services')
-	.get(globals.imageGallery('main'), services.index)
-	.post(services.services);
-
-// === services Route
-app.route('/services/:id').get(globals.imageGallery('main'), services.services);
-
-
 
 // === Magazines Route // Публикации
 app.route('/publish')
-	.get(globals.imageGallery('main'), magazines.index)
 	.post(magazines.get_magazines)
 
 // === Magazine Route // Публикации
 app.route('/publish/:id').get(magazines.magazine)
 
-// === Teams Route
-app.route('/team')
-	.get(globals.imageGallery('main'), teams.index)
-	.post(teams.get_teams)
-
-// === Specials Route
-app.route('/specials')
-	.get(globals.imageGallery('main'), specials.index)
-	.post(specials.get_specials)
-
-// === Special Route
-app.route('/specials/:id').get(specials.special)
-
-
-// === Exposure Route
-app.route('/exposure').get(globals.imageGallery('main'), exposure.index);
-
-// === Exposure hall Route
-app.route('/exposure/:id').get(exposure.hall);
-
-// === Collections Route
-app.route('/collections').get(collects.index);
-
-// === Collection Route
-app.route('/collections/:id').get(collects.collect);
-
-// === History Route
-app.route('/history').get(globals.imageGallery('history'), history.index);
 
 // === Subsidiarys Route
 app.route('/subsidiarys').get(subsidiarys.index);
 
 // === Subsidiary Route
 app.route('/subsidiarys/:id').get(subsidiarys.subsidiary);
-
-// === Souvenirs Route
-app.route('/souvenirs').get(souvenirs.index);
-
-// === Souvenir Route
-app.route('/souvenirs/:id').get(souvenirs.catalogue);
 
 
 // ------------------------
@@ -773,29 +693,8 @@ app.route('/registr')
 // *** Content Routes Block ***
 // ------------------------
 
-
-// === Team Route
-app.route('/team_st').get(content.team);
-
-
-// === Test Route
-app.route('/test').get(content.test);
-
-// === Services Route
-//-app.route('/services').get(globals.imageGallery('main'), content.services);
-
-// === Schedule Route
-app.route('/museum').get(content.museum);
-
 // === Contacts Route
 app.route('/contacts').get(content.contacts);
-
-// === Partnership Route
-app.route('/partnership').get(globals.imageGallery('main'), content.partnership);
-
-// === Serviceship Route
-app.route('/serviceship').get(globals.imageGallery('main'), content.serviceship);
-
 
 // ------------------------
 // *** Options Routers Block ***
