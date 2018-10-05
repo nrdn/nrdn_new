@@ -45,7 +45,16 @@ var categorySchema = new Schema({
 	date: {type: Date, default: Date.now}
 });
 
-
+var magazineSchema = new Schema({
+	title: { type: String, trim: true, locale: true },
+	num: Number,
+	url: { type: String, trim: true },
+	path: {
+		original: String,
+		thumb: String
+	},
+	date: {type: Date, default: Date.now}
+});
 
 // ------------------------
 // *** Plugins Block ***
@@ -53,12 +62,10 @@ var categorySchema = new Schema({
 
 
 userSchema.plugin(mongooseBcrypt, { fields: ['password'] });
-
-
-
 subsidiarySchema.plugin(mongooseLocale);
 eventSchema.plugin(mongooseLocale);
 categorySchema.plugin(mongooseLocale);
+magazineSchema.plugin(mongooseLocale);
 
 // ------------------------
 // *** Index Block ***
@@ -74,9 +81,7 @@ eventSchema.index({'title.value': 'text', 'description.value': 'text'}, {languag
 
 module.exports.User = mongoose.model('User', userSchema);
 
-
 module.exports.Subsidiary = mongoose.model('Subsidiary', subsidiarySchema);
 module.exports.Event = mongoose.model('Event', eventSchema);
 module.exports.Category = mongoose.model('Category', categorySchema);
-
-;
+module.exports.Magazine = mongoose.model('Magazine', magazineSchema);

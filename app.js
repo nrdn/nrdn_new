@@ -148,6 +148,7 @@ app.route('/events/:type/:id').get(events.event);
 
 // === Magazines Route // Публикации
 app.route('/publish')
+	.get(magazines.index)
 	.post(magazines.get_magazines)
 
 // === Magazine Route // Публикации
