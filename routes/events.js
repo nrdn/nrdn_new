@@ -45,9 +45,6 @@ exports.get_events = function(req, res) {
 		var Query = Event.find({'type': post.context.type});
 	}
 
-	// var Query = post.context.categorys || post.context.subsidiarys
-	// 	? Event.find({'type': post.context.type}).or([{ 'categorys': {'$in': post.context.categorys || []} }, { 'subsidiary': {'$in': post.context.subsidiarys || []} }])
-	// 	: Event.find({'type': post.context.type});
 
 	Query.where('title.lg').equals(req.locale).where('status').ne('hidden').sort('-date').skip(post.skip).limit(post.limit).populate('subsidiary').exec(function(err, events) {
 		var opts = {events: events, locale: req.locale, compileDebug: false, debug: false, cache: true, pretty: false};

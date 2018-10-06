@@ -1,13 +1,16 @@
 mixin eventsList(events)
+	- var uncategorized = (locale === 'ru' ? 'Без категории' : 'Uncategorized').replace(/ /g, "_").toLowerCase();
 	each event in events
 		if (event.subsidiary)
-			a.work_item(href='/events/' + event.type +'/' + event._id + '', data-type=event.subsidiary.i18n.title.get(locale), class=event.subsidiary.i18n.title.get('en') + ' ' + event.date.getFullYear() + ' ' + event.status)
+			- var className = event.subsidiary.i18n.title.get(locale) ? event.subsidiary.i18n.title.get(locale).replace(/ /g, "_").toLowerCase() : uncategorized
+
+			a.work_item(href='/events/' + event.type +'/' + event._id + '', data-type=event.subsidiary.i18n.title.get(locale), class=className + ' ' + event.date.getFullYear() + ' ' + event.status)
 				.item_image.work_images
 					.work_image.work_image_big(style='background-image: url(' + (event.images && event.images.length > 0 && event.images[0].thumb)+ ')')
 				.work_logo!= event.videos[0]
 				.work_title= event.i18n.title.get(locale)
 		else
-			a.work_item.content_item(href='/events/' + event.type +'/' + event._id + '', class=event.date.getFullYear() + ' ' + event.status)
+			a.work_item(href='/events/' + event.type +'/' + event._id + '', class=uncategorized + ' ' + event.date.getFullYear() + ' ' + event.status)
 				.item_image.work_images
 					.work_image.work_image_big(style='background-image: url(' + (event.images && event.images.length > 0 && event.images[0].thumb)+ ')')
 				.work_logo!= event.videos[0]

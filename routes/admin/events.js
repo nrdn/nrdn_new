@@ -5,11 +5,9 @@ var del = require('del');
 var async = require('async');
 var gm = require('gm').subClass({ imageMagick: true });
 var del = require('del');
-
 var Event = require('../../models/main.js').Event;
 var Category = require('../../models/main.js').Category;
 var Subsidiary = require('../../models/main.js').Subsidiary;
-
 var __appdir = path.dirname(require.main.filename);
 
 
@@ -67,9 +65,7 @@ exports.add_form = function(req, res) {
 	var post = req.body;
 	var files = req.files;
 	var images = [];
-
 	var event = new Event();
-
 	var locales = post.en ? ['ru', 'en'] : ['ru'];
 
 	locales.forEach(function(locale) {
@@ -83,11 +79,10 @@ exports.add_form = function(req, res) {
 	event.category = post.category;
 	event.type = post.type;
 	event.status = post.status;
+	event.inTrash = post.inTrash;
 	event.subsidiary = post.subsidiary != 'none' ? post.subsidiary : undefined;
 	event.categorys = post.categorys == '' ? [] : post.categorys;
-
 	event.videos = post.videos.filter(function(n){ return n != '' });
-
 	event.date = new Date(Date.UTC(post.date.year, post.date.month, post.date.date));
 
 	if (!post.images) {
@@ -210,10 +205,7 @@ exports.edit_form = function(req, res) {
 		event.status = post.status;
 		event.subsidiary = post.subsidiary != 'none' ? post.subsidiary : undefined;
 		event.categorys = post.categorys == '' ? [] : post.categorys;
-
 		event.videos = post.videos.filter(function(n){ return n != '' });
-
-
 		event.date = new Date(Date.UTC(post.date.year, post.date.month, post.date.date));
 
 		var public_path = __appdir + '/public';
@@ -286,13 +278,23 @@ exports.edit_form = function(req, res) {
 			})
 		});
 
-
-
-
-
 	});
 }
 
+// ------------------------
+// *** Hide Events Block ***
+// ------------------------
+
+
+exports.hide = function(req, res) {
+	var id = req.body.id;
+	Event.findById(id).exec(function(err, event) {
+		event.inTrash = event.inTrash !== 'true' ? 'true' : '';
+		event.save(function() {
+			res.send('ok');
+		});
+	});
+}
 
 // ------------------------
 // *** Remove Events Block ***

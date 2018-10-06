@@ -51,15 +51,6 @@ $(document).ready(function() {
 	$('.forward').on('click', snakeForward);
 
 
-	// $('form').submit(function(event) {
-	// 	var areas = $('textarea');
-	// 	areas.each(function() {
-	// 		var newValue = $(this).val().replace(/\n/g, "<br />");
-	// 		$(this).val(newValue);
-	// 	});
-	// 	$('form').submit();
-	// });
-
 	$(document).on('paste','[contenteditable]',function(e) {
 	    e.preventDefault();
 	    var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Paste something..');

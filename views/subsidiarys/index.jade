@@ -1,7 +1,7 @@
 extends ../layout
 
 block title
-	title= __('ФИЛИАЛЫ')
+	title= __('КАТЕГОРИИ')
 
 block content_style
 	link(rel='stylesheet', type='text/css', href='/build/css/subsidiarys.css' + version)
@@ -13,7 +13,7 @@ block content_scripts
 
 
 block content
-	.content_title= __('Филиалы')
+	.content_title= __('Категории')
 	.content_outer_block
 		.content_map_block(style='background-image: url(/images/design/map.png)')
 			each subsidiary in subsidiarys

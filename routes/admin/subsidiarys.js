@@ -115,23 +115,11 @@ exports.edit_form = function(req, res) {
 
 			checkNested(post, [locale, 'adress'])
 				&& subsidiary.setPropertyLocalised('adress', post[locale].adress, locale);
-
 		});
-
 		subsidiary.status = post.status;
-
-
-
-
-
-
-
-
 			subsidiary.save(function() {
 				res.redirect('back');
 			})
-
-
 	});
 }
 
@@ -145,10 +133,8 @@ exports.remove = function(req, res) {
 	var id = req.body.id;
 	Subsidiary.findByIdAndRemove(id, function() {
 		Event.update({ 'subsidiary': id }, { $unset: { 'subsidiary': id } }, {multi: true}).exec(function() {
-			Hall.update({ 'subsidiary': id }, { $unset: { 'subsidiary': id } }, {multi: true}).exec(function() {
-				del.sync(__appdir + '/public/images/subsidiarys/' + id);
-				res.send('ok');
-			});
+			del.sync(__appdir + '/public/images/subsidiarys/' + id);
+			res.send('ok');
 		});
 	});
 }

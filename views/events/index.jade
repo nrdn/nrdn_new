@@ -15,21 +15,23 @@ block content_style
 block content_scripts
 	script(type='text/javascript', src='/build/js/works.js')
 
-block content
-	//-.additional_header
-		if (subsidiarys.length > 0)
-			.content_navigate_block.subsidiarys
-				.navigate_title= __('Место')
-				.navigate_items_block
-					each subsidiary in subsidiarys
-						.navigate_item(class=subsidiary._id.toString())= subsidiary.i18n.title.get(locale)
+	- var directionArray = [];
+	- var tagsObject = '';
+	- var key;
+	- var uncategorized = locale === 'ru' ? 'Без категории' : 'Uncategorized';
+	- tagsObject = '\'' + uncategorized.replace(/ /g, "_").toLowerCase() + '\': \'' + uncategorized + '\'';
 
-		if (categorys.length > 0)
-			.content_navigate_block.categorys
-				.navigate_title= __('Функция')
-				.navigate_items_block
-					each category in categorys
-						.navigate_item(class=category._id.toString())= category.i18n.title.get(locale)
+		each subsidiary, i in subsidiarys
+			- key = subsidiary.i18n.title.get(locale) ? '\'' + subsidiary.i18n.title.get(locale) + '\'' : '\'' + uncategorized + '\'';
+			- directionArray.push(key.replace(/ /g, "_").toLowerCase());
+			- tagsObject = tagsObject + ', ' + key.replace(/ /g, "_").toLowerCase() + ': ' + key + '';
+
+	- directionArray.unshift('\'' + uncategorized.replace(/ /g, "_").toLowerCase() + '\'');
+
+	script='var direction = ['+ directionArray +']'
+	script='var tagsArray = {'+ tagsObject + '}'
+
+block content
 
 	.content_block_inner
 		.works_block.works_big

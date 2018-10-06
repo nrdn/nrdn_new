@@ -19,29 +19,6 @@ function getUnique(arr) {
 $(document).ready(function() {
 	var old_items = $('.work_item');
 
-	// function bg_move() {
-	// 	var max = $(this).find('.work_image').length;
-	// 	if (max > 1) {
-	// 		if (step > 99999)
-	// 			step = 10000;
-	// 		else
-	// 			step += event.pageX + event.pageY;
-
-	// 		var position = +step.toString().charAt(0);
-	// 		if (position != old_position) {
-	// 			var rand = getRandom(0, max);
-	// 			$(this).find('.work_image').hide();
-	// 			$(this).find('.work_image').eq(rand).show();
-	// 			old_position = position;
-	// 		}
-	// 	}
-	// }
-
-	// function bg_over() {
-	// 	$(this).children('.work_logo, .work_title').hide();
-	// 	$(this).children('.work_images').show();
-	// }
-
 	function bg_out() {
 		$work_images = $(this).find('.work_image');
 		var max = $work_images.length;
@@ -76,8 +53,14 @@ $(document).ready(function() {
 		});
 
 		var tags = getUnique(arr_items_tags);
-		var direction = ['urbanism', 'architecture', 'urban_projects', 'exhibitions', 'industrial_design', 'installation', 'navigation', 'graphic_design'];
+
+		console.log('tags', tags);
+
+		// var direction = ['urbanism', 'architecture', 'urban_projects', 'exhibitions', 'industrial_design', 'installation', 'navigation', 'graphic_design'];
 		var result = [];
+
+
+		console.log('DIRECTION::::', direction);
 
 		for (var i = 0; i < direction.length; ++i){
 			for (var j = 0; j < tags.length; ++j){
@@ -86,12 +69,24 @@ $(document).ready(function() {
 			}
 		}
 
+		console.log('RESULT::', result);
+
+
 		$.each(result, function(index, tag) {
-			var tags = {'urbanism':'Урбанизм', 'architecture':'Архитектура', 'urban_projects':'Специальные проекты', 'exhibitions':'Выставки', 'industrial_design':'Промышленный дизайн', 'installation': 'Инсталяции', 'navigation':'Навигация', 'graphic_design':'Графический дизайн'}
+			// var tagsArray = {'urbanism':'Урбанизм', 'architecture':'Архитектура', 'urban_projects':'Специальные проекты', 'exhibitions':'Выставки', 'industrial_design':'Промышленный дизайн', 'installation': 'Инсталяции', 'navigation':'Навигация', 'graphic_design':'Графический дизайн'}
+			console.log('index:::::', index);
+			console.log('RESULT:::::', result);
+			console.log('tagsArray:::::', tagsArray);
+
 			var tag_items = $(items).filter('.' + tag);
 			var work_tag = $('<div />', {'class':'work_tag ' + tag});
-			var work_tag_title = $('<div />', {'class':'work_tag_title', 'text':tags[tag]});
+			var work_tag_title = $('<div />', {'class':'work_tag_title', 'text':tagsArray[tag]});
+
+			console.log('work_tag_title:::', work_tag_title);
+
 			$('.works_block').append(work_tag.append(work_tag_title).append(tag_items));
+
+
 		});
 
 	});

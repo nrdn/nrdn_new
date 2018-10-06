@@ -3,39 +3,34 @@ var mongoose = require('mongoose'),
 		mongooseBcrypt = require('mongoose-bcrypt'),
 		Schema = mongoose.Schema;
 
-
 var userSchema = new Schema({
 	login: String,
 	password: String,
 	email: String,
-	status: {type: String, default: 'User'},
-	date: {type: Date, default: Date.now},
+	status: { type: String, default: 'User' },
+	date: { type: Date, default: Date.now },
 });
-
-
-
-
 
 var subsidiarySchema = new Schema({
 	title: { type: String, trim: true, locale: true },
 	adress: { type: String, trim: true, locale: true },
-	date: {type: Date, default: Date.now}
+	date: { type: Date, default: Date.now }
 });
 
 var eventSchema = new Schema({
 	title: { type: String, trim: true, locale: true },
 	description: { type: String, trim: true, locale: true },
 	subsidiary: { type: Schema.Types.ObjectId, ref: 'Subsidiary' },
-	categorys: [{ type: Schema.Types.ObjectId, ref: 'Category' }],
+	inTrash: String,
 	status: String,
 	type: String,
-	videos: [{type: String, trim: true}],
+	videos: [{ type: String, trim: true }],
 	images: [{
 		description: { type: String, trim: true, locale: true },
 		original: String,
 		thumb: String
 	}],
-	date: {type: Date, default: Date.now}
+	date: { type: Date, default: Date.now }
 });
 
 var categorySchema = new Schema({
