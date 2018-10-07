@@ -279,6 +279,34 @@ app.route('/auth/magazines/remove')
 
 
 // ------------------------
+// *** Admin Subsidiarys Routes Block ***
+// ------------------------
+
+
+
+// === Admin subsidiarys Route
+app.route('/auth/subsidiarys').get(checkAuth, admin_subsidiarys.list);
+
+
+// === Admin @add subsidiarys Route
+app.route('/auth/subsidiarys/add')
+	 .get(checkAuth, admin_subsidiarys.add)
+	 .post(checkAuth, admin_subsidiarys.add_form);
+
+
+// === Admin @edit subsidiarys Route
+app.route('/auth/subsidiarys/edit/:id')
+	 .get(checkAuth, admin_subsidiarys.edit)
+	 .post(checkAuth, admin_subsidiarys.edit_form);
+
+
+// === Admin @remove subsidiarys Route
+app.route('/auth/subsidiarys/remove')
+	 .post(checkAuth, admin_subsidiarys.remove);
+
+
+
+// ------------------------
 // *** Admin Contacts Content ***
 // ------------------------
 

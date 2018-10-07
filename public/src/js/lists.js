@@ -1,6 +1,7 @@
 $(document).ready(function() {
 	function remove(event) {
 		var id  = $(this).attr('id');
+		event.preventDefault();
 		if (confirm(event.data.description)) {
 			$.post(event.data.path, {'id': id}).done(function() {
 				location.reload();
@@ -10,15 +11,17 @@ $(document).ready(function() {
 
 	function hide(event) {
 		var id  = $(this).attr('id');
+		var $parent = $(this).parent();
+		event.preventDefault();
 		$.post(event.data.path, {'id': id}).done(function() {
-			location.reload();
+			$parent.toggleClass('deleted');
 		});
 	}
 
 	$('.rm_user').on('click', {path:'/auth/users/remove', description: 'Удалить пользователя?'}, remove);
 	$('.rm_news').on('click', {path:'/auth/slides/remove', description: 'Удалить слайд?'}, remove);
 
-	$('.rm_category').on('click', {path:'/auth/categorys/remove', description: 'Удалить категорию?'}, remove);
+	$('.rm_category').on('click', {path:'/auth/categorys/remove', description: 'Удалить тег?'}, remove);
 	$('.rm_subsidiary').on('click', {path:'/auth/subsidiarys/remove', description: 'Удалить категорию?'}, remove);
 	$('.rm_magazine').on('click', {path:'/auth/magazines/remove', description: 'Удалить публикацию?'}, remove);
 

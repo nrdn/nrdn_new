@@ -292,6 +292,7 @@ exports.hide = function(req, res) {
 		event.inTrash = event.inTrash !== 'true' ? 'true' : '';
 		event.save(function() {
 			res.send('ok');
+			// res.redirect('/auth/events#deleted');
 		});
 	});
 }

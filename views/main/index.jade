@@ -12,19 +12,21 @@ block content_scripts
 block append works_bg
 	.background_works
 		each event in events
-			if (event.images[0])
-				.background_item(style='background-image: url(' + event.images[0].original + ')')
-			else
-				.background_item(style='background-color:#eee')
+			if (event.inTrash !== 'true')
+				if (event.images[0])
+					.background_item(style='background-image: url(' + event.images[0].original + ')')
+				else
+					.background_item(style='background-color:#eee')
 
 block content
 	.works_block
 		each event in events
-			.work_item
-				.work_logo!= event.videos[0]
-				.work_tag= event.subsidiary ? event.subsidiary.i18n.title.get(locale) : ''
-				.work_title
-					a(href='/events/' + event.type + '/' + event._id)= event.i18n.title.get(locale)
+			if (event.inTrash !== 'true')
+				.work_item
+					.work_logo!= event.videos[0]
+					.work_tag= event.subsidiary ? event.subsidiary.i18n.title.get(locale) : ''
+					.work_title
+						a(href='/events/' + event.type + '/' + event._id)= event.i18n.title.get(locale)
 
 block footer
 	.social_block

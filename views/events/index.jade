@@ -32,11 +32,9 @@ block content_scripts
 	script='var tagsArray = {'+ tagsObject + '}'
 
 block content
-
 	.content_block_inner
 		.works_block.works_big
 			+eventsList(events)
-
 
 		.works_tags_sort_block
 			if (locale == 'ru')

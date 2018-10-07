@@ -6,7 +6,6 @@ block title
 
 block content_style
 	link(rel='stylesheet', type='text/css', href='/build/css/add.css')
-	link(rel='stylesheet', type='text/css', href='/build/css/events_style.css')
 	link(rel='stylesheet', type='text/css', href='/build/css/eventslist.css')
 
 block content_scripts
@@ -14,40 +13,34 @@ block content_scripts
 	script(type='text/javascript', src='/build/js/eventslist.js')
 
 block content
-	a.back_link(href='/auth') < Назад
-	.title= 'ОБЪЕКТЫ'
-	br
-	.sort_block
-		a(href='#') Все
-		!= ' | '
-		a(href='#architecture') Архитектура
-		!= ' | '
-		a(href='#design') Дизайн
-		!= ' | '
-		a(href='#deleted') Удаленные
+	.main_status#deleted
+		a.back_link(href='/auth') < Назад
+		.title= 'ОБЪЕКТЫ'
+		br
+		.sort_block
+			.sort_right
+				a(href='#') Все
+				!= ' | '
+				a(href='#architecture') Архитектура
+				!= ' | '
+				a(href='#design') Дизайн
+			.sort_left
+				a(class='deleted_btn', href='#deleted') Корзина
 
+		a.add(href='/auth/events/add') добавить объект
+			each category in categorys
+				a(id= category.id)= category.i18n.title.get('ru')
 
-
-	a.add(href='/auth/events/add') добавить объект
-
-
-		each category in categorys
-			a(id= category.id)= category.i18n.title.get('ru')
-
-	#deleted
 		.main_menu_block#architecture
 			.main_menu_inner#design
 				each event in events
 					.event(class= event.status + ' date' + event.date.getFullYear()+ ' ' + event.type + ' ' + (event.inTrash? 'deleted' : ''))
-						a.rm_event(href='#', id=event._id)= 'удалить навсегда '
-						!=' | '
+						a.rm_event(href='#', id=event._id)
+							span= 'удалить навсегда'
 						a.rm_event_toggle(href='#', id=event._id)
-							span= 'удалить '
-							span= 'восстановить '
-						a(href='/auth/events/edit/' + event._id)= (event.i18n.title.get('ru') ? event.i18n.title.get('ru') + ' | ' + event.date.getFullYear() : 'Заголовок объекта') + event.inTrash
+							span= 'в корзину'
+							span= 'восстановить'
+						a(href='/auth/events/edit/' + event._id)= (event.i18n.title.get('ru') ? event.i18n.title.get('ru') + ' | ' + event.date.getFullYear() : 'Заголовок объекта')
 
 	br
 	br
-	hr
-	br
-	
