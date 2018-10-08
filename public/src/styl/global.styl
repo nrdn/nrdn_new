@@ -28,6 +28,10 @@ ul
 	text-align center
 	z-index 100
 	width 100%
+	overflow-x scroll
+	@media (min-width: 768px) {
+		overflow visible
+	}
 
 .menu_block_inner
 	margin 0 auto
@@ -35,18 +39,22 @@ ul
 	height 30px
 	position relative
 	padding-left 10px
-	max-width 1247px
-	min-width 635px
+	width 800px
+	display flex
+	justify-content space-between
+	align-items center
+
+	@media (min-width: 768px) {
+		max-width 1247px
+		min-width 635px
+		width 100%
+	}
 
 .menu_items
-	left 220px
-	position absolute
-	margin 0
-	right 220px
 	text-align center
 	white-space nowrap
 	a
-		margin 6px 22px 0
+		margin 0 22px 4px
 		font 11pt/13pt 'Roboto'
 		display inline-block
 		text-decoration none
@@ -59,7 +67,7 @@ ul
 	margin 0 auto
 
 .logo
-	margin-top 5px
+	margin-bottom 4px
 	margin-right 190px
 	width 17px
 	height 17px
@@ -68,7 +76,8 @@ ul
 	font 11pt/13pt 'Roboto'
 	display block
 	position relative
-	float left
+	flex: 0 1 17px;
+
 	&:after
 		content 'Народный архитектор'
 		position absolute
@@ -114,10 +123,8 @@ a
 	transition-timing-function ease-in-out
 
 .toggle_lang_block
-	position absolute
-	top 7px
-	right 7px
 	font 9pt/13pt 'Roboto'
+	margin-right 7px
 	a
 		color #000
 		text-decoration none

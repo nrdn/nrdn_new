@@ -7,14 +7,14 @@ block content_style
 	link(rel='stylesheet', type='text/css', href='/build/css/contacts.css' + version)
 
 block content_scripts
-	script(type='text/javascript', src='http://maps.googleapis.com/maps/api/js?sensor=false')
-	script(type='text/javascript', src='/build/js/g_maps.js' + version)
+	//- script(type='text/javascript', src='http://maps.googleapis.com/maps/api/js?sensor=false')
+	//- script(type='text/javascript', src='/build/js/g_maps.js' + version)
 
 
 block content
 	.content_block_inner
 		.map_block
-			#map-canvas
+			iframe(src="https://yandex.ru/map-widget/v1/?um=constructor%3A2008fa51e9ddee53fc07d59083b5a7ec91ed7ecf891082e9ee18f1639f42bd3c&amp;source=constructor", width="1240", height="450", frameborder="0")
 		.about_block
 			.about_title
 				if (locale == 'ru')

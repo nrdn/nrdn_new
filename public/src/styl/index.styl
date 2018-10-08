@@ -1,12 +1,35 @@
+.main_block
+	height 85%
+	@media (min-width: 768px) {
+		height auto
+	}
+
 .content_block
-	margin-top 15%
 	text-align center
 	-webkit-user-select none
+	height: 100%;
+	width 100%
+	position: relative;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	@media (min-width: 768px) {
+		margin-top 15%
+		display block
+		min-height 200px
+		margin-top 80px
+		position absolute
+	}
+
 
 .works_block
-	width 420px
+	width 95%
 	margin 0 auto
 	color white
+	@media (min-width: 430px) {
+		width 420px
+	}
 
 .work_item
 	display none
