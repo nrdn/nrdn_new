@@ -22,12 +22,19 @@ ul
 	overflow-y auto
 	-webkit-overflow-scrolling touch
 
-.menu_block
+.menu_block_outer
 	margin-top 20px
 	position absolute
+	height 40px
+	width 100%
+	overflow hidden
+	z-index 1000
+
+.menu_block
 	text-align center
 	z-index 100
 	width 100%
+	padding-bottom 140px
 	overflow-x scroll
 	@media (min-width: 768px) {
 		overflow visible
