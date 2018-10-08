@@ -346,8 +346,10 @@ app.route('/registr')
 // *** Content Routes Block ***
 // ------------------------
 
-// === Contacts Route
+app.route('/about').get(content.about);
 app.route('/contacts').get(content.contacts);
+app.route('/museum').get(content.museum);
+// app.route('/test').get(content.test);
 
 // ------------------------
 // *** Options Routers Block ***

@@ -1,0 +1,22 @@
+extends ../layout
+
+block title
+	title= __('О НАС')
+
+block content_style
+	link(rel='stylesheet', type='text/css', href='/build/css/about.css' + version)
+
+
+block content
+	.content_block_inner
+		.about_block
+			.about_title
+				if (locale == 'ru')
+					| О НАС
+				else
+					| ABOUT
+			.about_description
+				if (locale == 'ru')
+					include content/about/ru.html
+				else
+					include content/about/en.html
