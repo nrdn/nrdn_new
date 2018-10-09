@@ -41,7 +41,7 @@ block append works_bg
 block content
 	.content_block_inner
 		.work_description_block
-			.work_title= event.i18n.title.get(locale)
+			h1.work_title= event.i18n.title.get(locale)
 			.work_description: != event.i18n.description.get(locale)
 		.round_click_block
 			.round_dot
