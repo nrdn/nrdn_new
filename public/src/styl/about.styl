@@ -17,13 +17,24 @@
 	font 14pt/16pt 'Roboto'
 
 .about_description
-	width 450px
 	margin-top 25px
 	font 11pt/15pt 'RobotoL'
 	p
 		margin 0
-		&:nth-child(1)
-			margin-right 3px
-			float left
 	a
 		color #000
+
+.description {
+	margin-bottom: 25px;
+}
+
+.description.flex {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.description.block {
+	width: calc(33% - 20px);
+	margin-bottom: 0;
+}
