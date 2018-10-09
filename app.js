@@ -128,13 +128,13 @@ app.route('/publish')
 // === Magazine Route // Публикации
 app.route('/publish/:id').get(magazines.magazine)
 
-
+/*
 // === Subsidiarys Route
 app.route('/subsidiarys').get(subsidiarys.index);
 
 // === Subsidiary Route
 app.route('/subsidiarys/:id').get(subsidiarys.subsidiary);
-
+*/
 
 // ------------------------
 // *** Admin Users Routes Block ***
