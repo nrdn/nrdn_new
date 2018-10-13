@@ -15,8 +15,14 @@ html
 								a.logo(href='/')
 							else
 								a.logo.logo_eng(href='/')
+
+							if (locale == 'ru')
+								span.logo
+							else
+								span.logo.logo_eng
 							.menu_items
 								.menu_items_inner
+									a(href='/', class="mobile")= __('Главная')
 									a(href='/about')= __('О нас')
 									a(href='/events/architecture')= __('Архитектура')
 									a(href='/events/design')= __('Дизайн')

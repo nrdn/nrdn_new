@@ -25,28 +25,24 @@ ul
 .menu_block_outer
 	margin-top 20px
 	position absolute
-	height 40px
 	width 100%
-	overflow hidden
 	z-index 1000
+	@media (min-width: 768px) {
+		height 40px
+		overflow hidden
+	}
 
 .menu_block
 	text-align center
 	z-index 100
 	width 100%
-	padding-bottom 140px
-	overflow-x scroll
-	@media (min-width: 768px) {
-		overflow visible
-	}
 
 .menu_block_inner
 	margin 0 auto
 	background-color rgba(255,255,255,0.7)
 	height 30px
-	position relative
 	padding-left 10px
-	width 800px
+	width calc(100vw - 20px);
 	display flex
 	justify-content space-between
 	align-items center
@@ -54,20 +50,53 @@ ul
 	@media (min-width: 768px) {
 		max-width 1247px
 		min-width 635px
-		width 100%
 	}
 
 .menu_items
-	text-align center
-	white-space nowrap
+	position absolute
+	top 35px
+	left: 20px;
+	right: 20px;
+	bottom: calc(-100vh + 70px);
+	background rgba(0, 0, 0, 0.88)
+	display none
+	align-items center
 	a
-		margin 0 22px 4px
+		margin 30px 22px
 		font 11pt/13pt 'Roboto'
-		display inline-block
+		display block
 		text-decoration none
-		color black
+		color #fff
+		border-bottom 1px solid transparent
 		&:hover
-			border-bottom black 1px dotted
+			border-bottom #fff 1px dotted
+		@media (min-width: 768px) {
+			display inline-block
+			margin 0 22px 4px
+			color #000
+			&:hover {
+				border-bottom #000 1px dotted
+			}
+		}
+
+	@media (min-width: 768px) {
+		position static
+		text-align center
+		white-space nowrap
+		background transparent
+		display block
+	}
+
+a.mobile {
+	@media (min-width: 768px) {
+		display: none;
+	}
+}
+
+
+.menu_items.flex {
+	display: flex;
+}
 
 .menu_items_inner
 	display inline
@@ -100,6 +129,20 @@ ul
 
 a
 	&.logo
+		display none
+		@media (min-width: 768px) {
+			display block
+		}
+		&:hover
+			text-decoration none
+			&:after
+				border-bottom black 1px dotted
+
+span
+	&.logo
+		@media (min-width: 768px) {
+			display none
+		}
 		&:hover
 			text-decoration none
 			&:after
