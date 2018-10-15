@@ -29,7 +29,8 @@ block title
 
 block content_style
 	link(rel='stylesheet', type='text/css', href='/build/css/work.css' + version)
-	link(rel='stylesheet', type='text/css', href='/build/css/design.css' + version)
+	if (event.type == 'design')
+		link(rel='stylesheet', type='text/css', href='/build/css/design.css' + version)
 
 block content_scripts
 	script(type='text/javascript', src='/build/js/work.js' + version)
