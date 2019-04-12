@@ -8,7 +8,7 @@ $(document).ready(function() {
 	$('body').removeClass('transparentBody');
 
 
-	$('.menu_items_inner a').on('click', function(event) {
+	$('a').on('click', function(event) {
 		var href = $(this).attr('href');
 		console.log('href');
 		event.preventDefault();
