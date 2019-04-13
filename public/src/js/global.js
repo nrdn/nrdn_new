@@ -13,6 +13,6 @@ $(document).ready(function() {
 		console.log('href');
 		event.preventDefault();
 		$('body').addClass('transparentBody');
-		setTimeout(function() {window.location.href = href}, 150);
+		setTimeout(function() {window.location.href = href}, 40);
 	})
 });
